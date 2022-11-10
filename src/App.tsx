@@ -6,16 +6,16 @@ import { filtered } from "./utils/filtered";
 
 function App(): JSX.Element {
   const [searchText, setSearchText] = useState("");
-  const filteredNames = filtered(data, searchText)
+  const filteredNames = filtered(data, searchText);
 
-  function handleChange(e:React.ChangeEvent<HTMLInputElement>):void{
-    setSearchText(e.target.value)
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>): void {
+    setSearchText(e.target.value);
   }
 
   return (
     <>
-      <SearchBar onChange={handleChange} text={searchText}/>
-      <BabyName />;
+      <SearchBar onChange={handleChange} text={searchText} />
+      <BabyName data={filteredNames} />;
     </>
   );
 }

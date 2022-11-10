@@ -1,16 +1,14 @@
-interface Names{
-  id: number
-  name: String
-  sex: string
+interface Names {
+  id: number;
+  name: string;
+  sex: string;
 }
 
-export function filtered(data:Names[], query:string):Names[]{
+export function filtered(data: Names[], query: string): Names[] {
   query = query.toLowerCase();
-  return data.filter(item=>{
-    item.name.split('').some(letter=>{
-      letter.toLowerCase().startsWith(query)
-    })
-  })
-
-
+  return data.filter((item) => {
+    return item.name.split(" ").some((letter) => {
+      return letter.toLowerCase().startsWith(query);
+    });
+  });
 }
