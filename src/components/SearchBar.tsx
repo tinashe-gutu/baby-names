@@ -1,17 +1,20 @@
 import { useState } from "react";
+type onChangeFunction = (e:React.ChangeEvent<HTMLInputElement>)=>void
 
-export function SearchBar(): JSX.Element {
-  const [searchText, setSearchText] = useState("");
+interface Search{
+  onChange: onChangeFunction
+  text: string
+}
 
+export function SearchBar({onChange, text}:Search): JSX.Element {
   return (
     <div className="search-bar">
       <input
-        value={searchText}
-        onChange={(e) => setSearchText(e.target.value)}
+        value={text}
+        onChange={(e) =>onChange(e)}
         type="text"
         placeholder="Search for a name"
       />
-      ;
     </div>
   );
 }
