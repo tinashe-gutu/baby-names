@@ -1,4 +1,3 @@
-import data from "../babyNamesData.json";
 import "./BabyName.css";
 
 export function BabyName(): JSX.Element {
