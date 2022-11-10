@@ -1,14 +1,14 @@
-import "./BabyName.css"
-interface Names{
-    id: number
-    name: string
-    sex: string
-  }
-  interface Props{
-    data:Names[]
-  }
+import "./BabyName.css";
+interface Names {
+  id: number;
+  name: string;
+  sex: string;
+}
+interface Props {
+  data: Names[];
+}
 
-export function BabyName({data}:Props): JSX.Element {
+export function BabyName({ data }: Props): JSX.Element {
   data.sort((a, b) => a.name.localeCompare(b.name));
   const namesList = data.map((el, i) => {
     if (el.sex === "f") {

@@ -6,14 +6,14 @@ test("filtered returns an array of item which start with specific query", () => 
       id: 0,
       name: "Zahra",
       sex: "f",
-    }
+    },
   ]);
   expect(filtered(data, "a")).toEqual([
     {
       id: 2,
       name: "Avah",
       sex: "f",
-    }
+    },
   ]);
 });
 
