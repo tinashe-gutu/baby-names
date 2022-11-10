@@ -1,5 +1,5 @@
 import data from "../babyNamesData.json";
-import "./BabyName.css"
+import "./BabyName.css";
 
 export function BabyName(): JSX.Element {
   const namesList = data.map((el, i) => {
