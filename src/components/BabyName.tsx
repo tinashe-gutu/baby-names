@@ -20,7 +20,7 @@ export function BabyName(): JSX.Element {
   });
 
   return (
-    <div>
+    <div className="names-container">
       <ul>{namesList}</ul>
     </div>
   );
