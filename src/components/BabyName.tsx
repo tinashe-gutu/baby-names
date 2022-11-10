@@ -19,5 +19,9 @@ export function BabyName(): JSX.Element {
     }
   });
 
-  return <ul>{namesList}</ul>;
+  return (
+  <div>
+    <ul>{namesList}</ul>
+  </div>
+  )
 }

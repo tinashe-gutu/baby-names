@@ -4,3 +4,28 @@
 .girl {
   background-color: pink;
 }
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  width: 55vw;
+  height: min-content;
+}
+
+li {
+  border-radius: 5px;
+  margin: 2.5px;
+  padding: 5px;
+}
+
+div {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70vw;
+  height: 95vh;
+  border: 1px solid black;
+}
