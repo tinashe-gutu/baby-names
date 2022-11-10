@@ -1,4 +1,5 @@
 import data from "../babyNamesData.json";
+import "./BabyName.css"
 
 export function BabyName(): JSX.Element {
   const namesList = data.map((el, i) => {
@@ -16,6 +17,6 @@ export function BabyName(): JSX.Element {
       );
     }
   });
-  
+
   return <ul>{namesList}</ul>;
 }
