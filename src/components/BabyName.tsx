@@ -20,8 +20,8 @@ export function BabyName(): JSX.Element {
   });
 
   return (
-  <div>
-    <ul>{namesList}</ul>
-  </div>
-  )
+    <div>
+      <ul>{namesList}</ul>
+    </div>
+  );
 }
