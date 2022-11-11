@@ -1,5 +1,7 @@
 import "./BabyName.css";
 import { useState } from "react";
+import { Favourites } from "./Favourites";
+
 interface Names {
   id: number;
   name: string;
@@ -12,15 +14,15 @@ interface Props {
 export function BabyName({ data }: Props): JSX.Element {
   const [favouriteNames, setFavouriteNames] = useState<number[]>([]);
 
-  function handleClick(key: number) {
-    setFavouriteNames((): number[] => {
-      if (favouriteNames.indexOf(key)) {
-        const firstHalf = favouriteNames.splice(0, favouriteNames.indexOf(key));
-        const secondHalf = favouriteNames.splice(
-          favouriteNames.indexOf(key, favouriteNames.length)
-        );
-        return [...firstHalf, ...secondHalf];
+  function handleClick(key: number, isFavourite = false) {
+    setFavouriteNames((prev): number[] => {
+      console.log(key);
+      if (prev.indexOf(key) >= 0 && isFavourite) {
+        console.log("already in list");
+        const removedArray = prev.filter((el) => el !== key);
+        return [...removedArray];
       } else {
+        console.log([...favouriteNames, key]);
         return [...favouriteNames, key];
       }
     });
@@ -28,20 +30,16 @@ export function BabyName({ data }: Props): JSX.Element {
 
   data.sort((a, b) => a.name.localeCompare(b.name));
   const namesList = data.map((el) => {
-    if (el.sex === "f") {
+    if (el.sex === "f" && !favouriteNames.some(nums=>nums===el.id)) {
       return (
         <li key={el.id} className="girl">
-          <a href="" onClick={() => handleClick(el.id)}>
-            {el.name}
-          </a>
+          <a onClick={() => handleClick(el.id)}>{el.name}</a>
         </li>
       );
-    } else {
+    } else if(el.sex === "m" && !favouriteNames.some(nums=>nums===el.id)) {
       return (
         <li key={el.id} className="boy">
-          <a href="" onClick={() => handleClick(el.id)}>
-            {el.name}
-          </a>
+          <a onClick={() => handleClick(el.id)}>{el.name}</a>
         </li>
       );
     }
@@ -50,7 +48,7 @@ export function BabyName({ data }: Props): JSX.Element {
   return (
     <>
       <div>
-        <Favourites babyName={favouriteNames} onClick={handleClick} />
+        <Favourites babyNames={favouriteNames} onClick={handleClick} />
       </div>
       <div className="names-container">
         <ul>{namesList}</ul>
