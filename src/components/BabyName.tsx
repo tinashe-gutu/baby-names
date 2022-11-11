@@ -1,6 +1,7 @@
 import "./BabyName.css";
 import { useState } from "react";
 import { Favourites } from "./Favourites";
+import { GenderButton } from "./GenderButton";
 
 interface Names {
   id: number;
@@ -10,18 +11,19 @@ interface Names {
 interface Props {
   data: Names[];
 }
-interface Active{
-  active:string
+interface Active {
+  active: string;
 }
 
 export function BabyName({ data }: Props): JSX.Element {
   const [favouriteNames, setFavouriteNames] = useState<number[]>([]);
-  const [isActive, setIsActive] = useState<Active>({active:'all'})
+  const [isActive, setIsActive] = useState<Active>({ active: "all" });
 
-  function handleActiveClick(gender:string){
-    setIsActive((currentActive):Active=>({...currentActive, active:gender}))
+  function handleActiveClick(gender: string) {
+    setIsActive(
+      (currentActive): Active => ({ ...currentActive, active: gender })
+    );
   }
-
 
   function handleClick(key: number, isFavourite = false) {
     setFavouriteNames((prev): number[] => {
@@ -39,7 +41,11 @@ export function BabyName({ data }: Props): JSX.Element {
 
   data.sort((a, b) => a.name.localeCompare(b.name));
   const namesList = data.map((el): JSX.Element => {
-    if (el.sex === "f" && !favouriteNames.some((nums) => nums === el.id) && isActive.active===('girls'||'all')) {
+    if (
+      el.sex === "f" &&
+      !favouriteNames.some((nums) => nums === el.id) &&
+      (isActive.active === "girls" || isActive.active === "all")
+    ) {
       return (
         <li key={el.id} className="girl">
           <button onClick={() => handleClick(el.id)}>{el.name}</button>
@@ -47,8 +53,8 @@ export function BabyName({ data }: Props): JSX.Element {
       );
     } else if (
       el.sex === "m" &&
-      !favouriteNames.some((nums) => nums === el.id)
-      && isActive.active===('boys'||'all')
+      !favouriteNames.some((nums) => nums === el.id) &&
+      (isActive.active === "boys" || isActive.active === "all")
     ) {
       return (
         <li key={el.id} className="boy">
@@ -63,9 +69,12 @@ export function BabyName({ data }: Props): JSX.Element {
     <>
       <div>
         <Favourites babyNames={favouriteNames} onClick={handleClick} />
-        <Button onClick={()=>handleActiveClick('all') gender='all'} />
-        <Button onClick={()=>handleActiveClick('girls') gender='girls'} />
-        <Button onClick={()=>handleActiveClick('boys') gender='boys'} />
+        <GenderButton onClick={() => handleActiveClick("all")} gender="all" />
+        <GenderButton
+          onClick={() => handleActiveClick("girls")}
+          gender="girls"
+        />
+        <GenderButton onClick={() => handleActiveClick("boys")} gender="boys" />
       </div>
       <div className="names-container">
         <ul>{namesList}</ul>
