@@ -1,29 +1,23 @@
-import "./BabyName.css";
+import "./BabyNames.css";
 import { useState } from "react";
 import { Favourites } from "./Favourites";
-import { GenderButton } from "./GenderButton";
 
 interface Names {
   id: number;
   name: string;
   sex: string;
 }
-interface Props {
-  data: Names[];
-}
-interface Active {
+interface ActiveGender {
   active: string;
 }
 
-export function BabyName({ data }: Props): JSX.Element {
-  const [favouriteNames, setFavouriteNames] = useState<number[]>([]);
-  const [isActive, setIsActive] = useState<Active>({ active: "all" });
+interface Props {
+  data: Names[];
+  isActive: ActiveGender;
+}
 
-  function handleActiveClick(gender: string) {
-    setIsActive(
-      (currentActive): Active => ({ ...currentActive, active: gender })
-    );
-  }
+export function BabyNames({ data, isActive }: Props): JSX.Element {
+  const [favouriteNames, setFavouriteNames] = useState<number[]>([]);
 
   function handleClick(key: number, isFavourite = false) {
     setFavouriteNames((prev): number[] => {
@@ -69,13 +63,8 @@ export function BabyName({ data }: Props): JSX.Element {
     <>
       <div>
         <Favourites babyNames={favouriteNames} onClick={handleClick} />
-        <GenderButton onClick={() => handleActiveClick("all")} gender="all" />
-        <GenderButton
-          onClick={() => handleActiveClick("girls")}
-          gender="girls"
-        />
-        <GenderButton onClick={() => handleActiveClick("boys")} gender="boys" />
       </div>
+      <hr />
       <div className="names-container">
         <ul>{namesList}</ul>
       </div>

@@ -1,4 +1,5 @@
 import data from "../babyNamesData.json";
+import "./BabyNames.css";
 
 type onChangeFunction = (key: number, isFavrourite: boolean) => void;
 
@@ -34,8 +35,13 @@ export function Favourites({ babyNames, onClick }: Props): JSX.Element {
     }
   });
   return (
-    <p>
-      Favourite Names: <ul>{namesList}</ul>
-    </p>
+    <div className="favourites-container">
+      <p className="favourite-p">Favourites: </p>
+      {namesList.length === 0 ? (
+        <p>Click some names below to add to your shortlist...</p>
+      ) : (
+        <ul>{namesList}</ul>
+      )}
+    </div>
   );
 }

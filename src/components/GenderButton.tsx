@@ -1,19 +1,48 @@
+import {
+  BsGenderMale,
+  BsGenderFemale,
+  BsGenderAmbiguous,
+} from "react-icons/bs";
+type handleFuntion = (sex: string) => void;
 
-type handleFuntion = (sex:string)=>void
-
-interface Genders{
-    onClick:handleFuntion
-    gender: string
+interface Genders {
+  onClick: handleFuntion;
+  gender: string;
+  isActive: string;
 }
 
-export function GenderButton({onClick, gender}:Genders):JSX.Element{
-    switch(gender){
-        case 'boys':
-            return <button onClick={()=>onClick(gender)}>Boys</button>
-        case 'girls': 
-            return <button onClick={()=>onClick(gender)}>Girls</button>
-        default:
-            return <button onClick={()=>onClick(gender)}>All</button>
-    }
+export function GenderButton({
+  onClick,
+  gender,
+  isActive,
+}: Genders): JSX.Element {
+  switch (gender) {
+    case "boys":
+      return (
+        <button
+          className={isActive === "boys" ? "active boy " : "inActive boy"}
+          onClick={() => onClick(gender)}
+        >
+          <BsGenderMale />
+        </button>
+      );
+    case "girls":
+      return (
+        <button
+          className={isActive === "girls" ? "active girl" : "inActive girl"}
+          onClick={() => onClick(gender)}
+        >
+          <BsGenderFemale />
+        </button>
+      );
+    default:
+      return (
+        <button
+          className={isActive === "all" ? "active" : "inActive"}
+          onClick={() => onClick(gender)}
+        >
+          <BsGenderAmbiguous />
+        </button>
+      );
+  }
 }
-

@@ -2,19 +2,19 @@ import "./SearchBar.css";
 
 type onChangeFunction = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
-interface Search {
+interface TextProps {
   onChange: onChangeFunction;
   text: string;
 }
 
-export function SearchBar({ onChange, text }: Search): JSX.Element {
+export function SearchBar({ onChange, text }: TextProps): JSX.Element {
   return (
     <div className="search-container">
       <input
         value={text}
         onChange={(e) => onChange(e)}
         type="text"
-        placeholder="Search for a name"
+        placeholder="TextProps for a name"
         className="search-box"
       />
     </div>
