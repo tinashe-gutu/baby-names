@@ -4,9 +4,7 @@
 .girl {
   background-color: pink;
 }
-a{
-  text-decoration: none;
-}
+
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -30,4 +28,9 @@ li {
   border: 1px solid black;
   width: min-content;
   margin-top: 5%;
+}
+
+button {
+  background-color: transparent;
+  border: none;
 }

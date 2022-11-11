@@ -22,13 +22,13 @@ export function Favourites({ babyNames, onClick }: Props): JSX.Element {
     if (el.sex === "f") {
       return (
         <li key={el.id} className="girl">
-          <a onClick={() => onClick(el.id, true)}>{el.name}</a>
+          <button onClick={() => onClick(el.id, true)}>{el.name}</button>
         </li>
       );
     } else {
       return (
         <li key={el.id} className="boy">
-          <a onClick={() => onClick(el.id, true)}>{el.name}</a>
+          <button onClick={() => onClick(el.id, true)}>{el.name}</button>
         </li>
       );
     }

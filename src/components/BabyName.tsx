@@ -29,20 +29,24 @@ export function BabyName({ data }: Props): JSX.Element {
   }
 
   data.sort((a, b) => a.name.localeCompare(b.name));
-  const namesList = data.map((el) => {
-    if (el.sex === "f" && !favouriteNames.some(nums=>nums===el.id)) {
+  const namesList = data.map((el): JSX.Element => {
+    if (el.sex === "f" && !favouriteNames.some((nums) => nums === el.id)) {
       return (
         <li key={el.id} className="girl">
-          <a onClick={() => handleClick(el.id)}>{el.name}</a>
+          <button onClick={() => handleClick(el.id)}>{el.name}</button>
         </li>
       );
-    } else if(el.sex === "m" && !favouriteNames.some(nums=>nums===el.id)) {
+    } else if (
+      el.sex === "m" &&
+      !favouriteNames.some((nums) => nums === el.id)
+    ) {
       return (
         <li key={el.id} className="boy">
-          <a onClick={() => handleClick(el.id)}>{el.name}</a>
+          <button onClick={() => handleClick(el.id)}>{el.name}</button>
         </li>
       );
     }
+    return <></>;
   });
 
   return (
