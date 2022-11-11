@@ -29,3 +29,8 @@ li {
   width: min-content;
   margin-top: 5%;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+}
