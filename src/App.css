@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.header button {
+  margin-top: 35px;
+  height: 35px;
+  margin-left: 3px;
+}
+
+.active {
+  border-bottom: 3px solid black;
+}
+
+.container {
+  border: 3px solid pink;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70vw;
+}

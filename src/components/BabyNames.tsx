@@ -1,4 +1,4 @@
-import "./BabyName.css";
+import "./BabyNames.css";
 import { useState } from "react";
 import { Favourites } from "./Favourites";
 
@@ -7,11 +7,16 @@ interface Names {
   name: string;
   sex: string;
 }
-interface Props {
-  data: Names[];
+interface ActiveGender {
+  active: string;
 }
 
-export function BabyName({ data }: Props): JSX.Element {
+interface Props {
+  data: Names[];
+  isActive: ActiveGender;
+}
+
+export function BabyNames({ data, isActive }: Props): JSX.Element {
   const [favouriteNames, setFavouriteNames] = useState<number[]>([]);
 
   function handleClick(key: number, isFavourite = false) {
@@ -30,7 +35,11 @@ export function BabyName({ data }: Props): JSX.Element {
 
   data.sort((a, b) => a.name.localeCompare(b.name));
   const namesList = data.map((el): JSX.Element => {
-    if (el.sex === "f" && !favouriteNames.some((nums) => nums === el.id)) {
+    if (
+      el.sex === "f" &&
+      !favouriteNames.some((nums) => nums === el.id) &&
+      (isActive.active === "girls" || isActive.active === "all")
+    ) {
       return (
         <li key={el.id} className="girl">
           <button onClick={() => handleClick(el.id)}>{el.name}</button>
@@ -38,7 +47,8 @@ export function BabyName({ data }: Props): JSX.Element {
       );
     } else if (
       el.sex === "m" &&
-      !favouriteNames.some((nums) => nums === el.id)
+      !favouriteNames.some((nums) => nums === el.id) &&
+      (isActive.active === "boys" || isActive.active === "all")
     ) {
       return (
         <li key={el.id} className="boy">
@@ -54,6 +64,7 @@ export function BabyName({ data }: Props): JSX.Element {
       <div>
         <Favourites babyNames={favouriteNames} onClick={handleClick} />
       </div>
+      <hr />
       <div className="names-container">
         <ul>{namesList}</ul>
       </div>
