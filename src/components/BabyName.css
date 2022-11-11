@@ -4,7 +4,9 @@
 .girl {
   background-color: pink;
 }
-
+a{
+  text-decoration: none;
+}
 ul {
   display: flex;
   flex-wrap: wrap;
