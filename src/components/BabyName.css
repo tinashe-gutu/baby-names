@@ -9,6 +9,8 @@ ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
   list-style: none;
   width: 55vw;
   height: min-content;
@@ -20,12 +22,10 @@ li {
   padding: 5px;
 }
 
-div {
-  display: flex;
-  justify-content: center;
+.names-container {
   margin-left: auto;
   margin-right: auto;
-  width: 70vw;
-  height: 95vh;
   border: 1px solid black;
+  width: min-content;
+  margin-top: 5%;
 }

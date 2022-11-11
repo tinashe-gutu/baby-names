@@ -1,7 +1,15 @@
-import data from "../babyNamesData.json";
 import "./BabyName.css";
 
-export function BabyName(): JSX.Element {
+interface Names {
+  id: number;
+  name: string;
+  sex: string;
+}
+interface Props {
+  data: Names[];
+}
+
+export function BabyName({ data }: Props): JSX.Element {
   data.sort((a, b) => a.name.localeCompare(b.name));
   const namesList = data.map((el, i) => {
     if (el.sex === "f") {
@@ -20,7 +28,7 @@ export function BabyName(): JSX.Element {
   });
 
   return (
-    <div>
+    <div className="names-container">
       <ul>{namesList}</ul>
     </div>
   );
