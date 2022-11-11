@@ -38,10 +38,6 @@ li button {
   display: flex;
 }
 
-.favourite-p {
-  margin-left: 200px;
-}
-
 .favourites-container p {
   font-weight: 300;
   font-size: 25px;
