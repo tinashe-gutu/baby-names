@@ -1,4 +1,5 @@
 import "./BabyName.css";
+
 interface Names {
   id: number;
   name: string;

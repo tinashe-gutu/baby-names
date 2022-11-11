@@ -1,0 +1,11 @@
+.search-container {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+  height: 35px;
+}
+
+.search-box {
+  border-radius: 5px;
+}
